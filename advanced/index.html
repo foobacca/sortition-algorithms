@@ -1,0 +1,2057 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A package containing algorithms for sortition - democratic lotteries.">
+      
+      
+        <meta name="author" content="Sortition Foundation">
+      
+      
+        <link rel="canonical" href="https://sortitionfoundation.github.io/sortition-algorithms/advanced/">
+      
+      
+        <link rel="prev" href="../adapters/">
+      
+      
+        <link rel="next" href="../api-reference/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Advanced - sortition-algorithms</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#advanced-usage" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="sortition-algorithms" class="md-header__button md-logo" aria-label="sortition-algorithms" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            sortition-algorithms
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Advanced
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="deep-orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/sortitionfoundation/sortition-algorithms" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sortitionfoundation/sortition-algorithms
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="sortition-algorithms" class="md-nav__button md-logo" aria-label="sortition-algorithms" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    sortition-algorithms
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/sortitionfoundation/sortition-algorithms" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sortitionfoundation/sortition-algorithms
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Quick Start
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Concepts
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CLI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adapters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Adapters
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Advanced
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Advanced
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#algorithm-deep-dive" class="md-nav__link">
+    <span class="md-ellipsis">
+      Algorithm Deep Dive
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Algorithm Deep Dive">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#understanding-selection-algorithms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding Selection Algorithms
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding Selection Algorithms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#maximin-algorithm-default" class="md-nav__link">
+    <span class="md-ellipsis">
+      Maximin Algorithm (Default)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nash-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nash Algorithm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#leximin-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Leximin Algorithm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#legacy-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Legacy Algorithm
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#algorithm-performance-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      Algorithm Performance Comparison
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complex-scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Complex Scenarios
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Complex Scenarios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multiple-selection-rounds" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multiple Selection Rounds
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#weighted-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Weighted Selection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamic-quota-adjustment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dynamic Quota Adjustment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hierarchical-quotas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hierarchical Quotas
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Optimization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#large-dataset-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Large Dataset Handling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parallel-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parallel Processing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting Guide
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting Guide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-error-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Error Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Error Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#infeasible-quotas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Infeasible Quotas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-quality-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Quality Issues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Issues
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Debug Mode
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#web-application-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Web Application Integration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#batch-processing-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Batch Processing Pipeline
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monitoring-and-alerting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monitoring and Alerting
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices Summary
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices Summary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#development-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Development Best Practices
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#production-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Production Best Practices
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scaling-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scaling Best Practices
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next Steps
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API Reference
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Modules
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#algorithm-deep-dive" class="md-nav__link">
+    <span class="md-ellipsis">
+      Algorithm Deep Dive
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Algorithm Deep Dive">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#understanding-selection-algorithms" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding Selection Algorithms
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding Selection Algorithms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#maximin-algorithm-default" class="md-nav__link">
+    <span class="md-ellipsis">
+      Maximin Algorithm (Default)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nash-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nash Algorithm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#leximin-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Leximin Algorithm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#legacy-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Legacy Algorithm
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#algorithm-performance-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      Algorithm Performance Comparison
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complex-scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      Complex Scenarios
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Complex Scenarios">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multiple-selection-rounds" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multiple Selection Rounds
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#weighted-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Weighted Selection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamic-quota-adjustment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dynamic Quota Adjustment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hierarchical-quotas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hierarchical Quotas
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Optimization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#large-dataset-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Large Dataset Handling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parallel-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parallel Processing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting Guide
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting Guide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-error-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Error Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Error Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#infeasible-quotas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Infeasible Quotas
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-quality-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Quality Issues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Issues
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Debug Mode
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#web-application-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Web Application Integration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#batch-processing-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Batch Processing Pipeline
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monitoring-and-alerting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monitoring and Alerting
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices Summary
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices Summary">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#development-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Development Best Practices
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#production-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Production Best Practices
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scaling-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scaling Best Practices
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next Steps
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="advanced-usage">Advanced Usage<a class="headerlink" href="#advanced-usage" title="Permanent link">&para;</a></h1>
+<p>This guide covers complex scenarios, optimization techniques, troubleshooting strategies, and advanced usage patterns for the sortition algorithms library.</p>
+<h2 id="algorithm-deep-dive">Algorithm Deep Dive<a class="headerlink" href="#algorithm-deep-dive" title="Permanent link">&para;</a></h2>
+<h3 id="understanding-selection-algorithms">Understanding Selection Algorithms<a class="headerlink" href="#understanding-selection-algorithms" title="Permanent link">&para;</a></h3>
+<p>Each algorithm optimizes for different fairness criteria:</p>
+<h4 id="maximin-algorithm-default">Maximin Algorithm (Default)<a class="headerlink" href="#maximin-algorithm-default" title="Permanent link">&para;</a></h4>
+<p><strong>Objective</strong>: Maximize the minimum selection probability across all groups.</p>
+<pre><code class="language-python">settings = Settings(selection_algorithm=&quot;maximin&quot;)
+</code></pre>
+<p><strong>When to use</strong>:</p>
+<ul>
+<li>Default choice for most applications</li>
+<li>Ensures no group is severely underrepresented</li>
+<li>Good for citizen assemblies and deliberative panels</li>
+</ul>
+<p><strong>Trade-offs</strong>:</p>
+<ul>
+<li>May not optimize overall fairness</li>
+<li>Can be conservative in selection choices</li>
+</ul>
+<p><strong>Example scenario</strong>: A panel where ensuring minimum representation for small minorities is crucial.</p>
+<h4 id="nash-algorithm">Nash Algorithm<a class="headerlink" href="#nash-algorithm" title="Permanent link">&para;</a></h4>
+<p><strong>Objective</strong>: Maximize the product of all selection probabilities.</p>
+<pre><code class="language-python">settings = Settings(selection_algorithm=&quot;nash&quot;)
+</code></pre>
+<p><strong>When to use</strong>:</p>
+<ul>
+<li>Large, diverse candidate pools</li>
+<li>When you want balanced representation across all groups</li>
+<li>Academic research requiring mathematical optimality</li>
+</ul>
+<p><strong>Trade-offs</strong>:</p>
+<ul>
+<li>More complex optimization</li>
+<li>May be harder to explain to stakeholders</li>
+</ul>
+<p><strong>Example scenario</strong>: Research study requiring theoretically optimal fairness across all demographic groups.</p>
+<h4 id="leximin-algorithm">Leximin Algorithm<a class="headerlink" href="#leximin-algorithm" title="Permanent link">&para;</a></h4>
+<p><strong>Objective</strong>: Lexicographic maximin optimization (requires Gurobi license).</p>
+<pre><code class="language-python">settings = Settings(selection_algorithm=&quot;leximin&quot;)
+</code></pre>
+<p><strong>When to use</strong>:</p>
+<ul>
+<li>Academic research requiring strongest fairness guarantees</li>
+<li>When you have access to Gurobi (commercial/academic license)</li>
+<li>High-stakes selections where maximum fairness is essential</li>
+</ul>
+<p><strong>Trade-offs</strong>:</p>
+<ul>
+<li>Requires commercial solver (Gurobi)</li>
+<li>More computationally intensive</li>
+<li>May be overkill for routine selections</li>
+</ul>
+<p><strong>Example scenario</strong>: Government-sponsored citizen assembly where mathematical proof of fairness is required.</p>
+<h4 id="legacy-algorithm">Legacy Algorithm<a class="headerlink" href="#legacy-algorithm" title="Permanent link">&para;</a></h4>
+<p><strong>Objective</strong>: Backwards compatibility with earlier implementations.</p>
+<pre><code class="language-python">settings = Settings(selection_algorithm=&quot;legacy&quot;)
+</code></pre>
+<p><strong>When to use</strong>:</p>
+<ul>
+<li>Reproducing historical selections</li>
+<li>Comparison studies</li>
+<li>Specific compatibility requirements</li>
+</ul>
+<p><strong>Trade-offs</strong>:</p>
+<ul>
+<li>Less sophisticated than modern algorithms</li>
+<li>May not provide optimal fairness</li>
+</ul>
+<h3 id="algorithm-performance-comparison">Algorithm Performance Comparison<a class="headerlink" href="#algorithm-performance-comparison" title="Permanent link">&para;</a></h3>
+<pre><code class="language-python">def compare_algorithms():
+    algorithms = [&quot;maximin&quot;, &quot;nash&quot;, &quot;leximin&quot;]
+    results = {}
+
+    for algorithm in algorithms:
+        settings = Settings(
+            selection_algorithm=algorithm,
+            random_number_seed=42  # For fair comparison
+        )
+
+        start_time = time.time()
+        success, panels, msgs = run_stratification(
+            features, people, 100, settings
+        )
+        end_time = time.time()
+
+        results[algorithm] = {
+            &quot;success&quot;: success,
+            &quot;runtime&quot;: end_time - start_time,
+            &quot;panel_size&quot;: len(panels[0]) if success else 0,
+            &quot;messages&quot;: len(msgs)
+        }
+
+    return results
+</code></pre>
+<h2 id="complex-scenarios">Complex Scenarios<a class="headerlink" href="#complex-scenarios" title="Permanent link">&para;</a></h2>
+<h3 id="multiple-selection-rounds">Multiple Selection Rounds<a class="headerlink" href="#multiple-selection-rounds" title="Permanent link">&para;</a></h3>
+<p>For applications requiring multiple panels:</p>
+<pre><code class="language-python">def multiple_panel_selection():
+    settings = Settings(random_number_seed=None)  # Different each time
+    all_panels = []
+    remaining_people = deepcopy(original_people)
+
+    for round_num in range(5):  # 5 panels of 50 each
+        success, panels, msgs = run_stratification(
+            features, remaining_people, 50, settings
+        )
+
+        if success:
+            selected_panel = panels[0]
+            all_panels.append(selected_panel)
+
+            # Remove selected people from pool
+            for person_id in selected_panel:
+                remaining_people.remove(person_id)
+
+            print(f&quot;Round {round_num + 1}: Selected {len(selected_panel)} people&quot;)
+            print(f&quot;Remaining pool: {len(remaining_people)} people&quot;)
+        else:
+            print(f&quot;Round {round_num + 1} failed: {msgs}&quot;)
+            break
+
+    return all_panels
+</code></pre>
+<h3 id="weighted-selection">Weighted Selection<a class="headerlink" href="#weighted-selection" title="Permanent link">&para;</a></h3>
+<p>For scenarios where some demographic groups need stronger representation:</p>
+<pre><code class="language-python">def create_weighted_features():
+    &quot;&quot;&quot;Create features with weighted quotas for underrepresented groups.&quot;&quot;&quot;
+
+    # Standard proportional representation
+    base_features = [
+        (&quot;Gender&quot;, &quot;Male&quot;, 45, 55),
+        (&quot;Gender&quot;, &quot;Female&quot;, 45, 55),
+        (&quot;Age&quot;, &quot;18-30&quot;, 20, 30),
+        (&quot;Age&quot;, &quot;31-50&quot;, 35, 45),
+        (&quot;Age&quot;, &quot;51+&quot;, 25, 35),
+    ]
+
+    # Weighted to ensure representation of underrepresented groups
+    weighted_features = [
+        (&quot;Gender&quot;, &quot;Male&quot;, 40, 50),       # Slightly reduce majority
+        (&quot;Gender&quot;, &quot;Female&quot;, 45, 55),     # Maintain strong representation
+        (&quot;Gender&quot;, &quot;Non-binary&quot;, 5, 10),  # Ensure inclusion
+        (&quot;Age&quot;, &quot;18-30&quot;, 25, 35),         # Boost young representation
+        (&quot;Age&quot;, &quot;31-50&quot;, 35, 45),
+        (&quot;Age&quot;, &quot;51+&quot;, 20, 30),
+    ]
+
+    return create_features_from_list(weighted_features)
+
+def create_features_from_list(feature_list):
+    &quot;&quot;&quot;Helper to create FeatureCollection from tuples.&quot;&quot;&quot;
+    import csv
+    from io import StringIO
+
+    # Convert to CSV format
+    csv_content = &quot;feature,value,min,max\n&quot;
+    for feature, value, min_val, max_val in feature_list:
+        csv_content += f&quot;{feature},{value},{min_val},{max_val}\n&quot;
+
+    # Use CSV adapter to create FeatureCollection
+    adapter = CSVAdapter()
+    features, msgs = adapter.load_features_from_str(csv_content)
+    return features
+</code></pre>
+<h3 id="dynamic-quota-adjustment">Dynamic Quota Adjustment<a class="headerlink" href="#dynamic-quota-adjustment" title="Permanent link">&para;</a></h3>
+<p>Automatically adjust quotas based on available candidates:</p>
+<pre><code class="language-python">def adjust_quotas_for_availability(features: FeatureCollection, people: People) -&gt; FeatureCollection:
+    &quot;&quot;&quot;Adjust quotas based on actual candidate availability.&quot;&quot;&quot;
+
+    # Count available people in each category
+    category_counts = {}
+    for person_id in people:
+        person_data = people.get_person_dict(person_id)
+
+        for feature_name in features.feature_names:
+            feature_value = person_data.get(feature_name, &quot;Unknown&quot;)
+            key = (feature_name, feature_value)
+            category_counts[key] = category_counts.get(key, 0) + 1
+
+    # Calculate proportional quotas
+    total_people = len(people)
+    adjusted_features = []
+
+    for feature_name, value_name, value_counts in features.feature_values_counts():
+        available = category_counts.get((feature_name, value_name), 0)
+
+        if available == 0:
+            # No candidates available - set quotas to 0
+            min_quota = max_quota = 0
+        else:
+            # Calculate proportional representation with some flexibility
+            proportion = available / total_people
+            min_quota = max(0, int(proportion * 100) - 5)  # Allow 5% flexibility
+            max_quota = min(available, int(proportion * 100) + 5)
+
+        adjusted_features.append((feature_name, value_name, min_quota, max_quota))
+
+    return create_features_from_list(adjusted_features)
+</code></pre>
+<h3 id="hierarchical-quotas">Hierarchical Quotas<a class="headerlink" href="#hierarchical-quotas" title="Permanent link">&para;</a></h3>
+<p>For complex quota relationships:</p>
+<pre><code class="language-python">def hierarchical_quota_validation(features: FeatureCollection, panel_size: int) -&gt; list[str]:
+    &quot;&quot;&quot;Validate hierarchical quota constraints.&quot;&quot;&quot;
+    warnings = []
+
+    # Example: Age + Education constraints
+    # Ensure university graduates are distributed across age groups
+
+    age_university_constraints = {
+        (&quot;Age&quot;, &quot;18-30&quot;, &quot;Education&quot;, &quot;University&quot;): (5, 15),  # 5-15 young graduates
+        (&quot;Age&quot;, &quot;31-50&quot;, &quot;Education&quot;, &quot;University&quot;): (10, 20), # 10-20 middle-age graduates
+        (&quot;Age&quot;, &quot;51+&quot;, &quot;Education&quot;, &quot;University&quot;): (5, 15),    # 5-15 older graduates
+    }
+
+    for (age_feature, age_value, edu_feature, edu_value), (min_q, max_q) in age_university_constraints.items():
+        # This is conceptual - actual implementation would need
+        # custom constraint checking logic
+        warnings.append(f&quot;Hierarchical constraint: {age_value} {edu_value} should be {min_q}-{max_q}&quot;)
+
+    return warnings
+</code></pre>
+<h2 id="performance-optimization">Performance Optimization<a class="headerlink" href="#performance-optimization" title="Permanent link">&para;</a></h2>
+<h3 id="large-dataset-handling">Large Dataset Handling<a class="headerlink" href="#large-dataset-handling" title="Permanent link">&para;</a></h3>
+<p>For pools with hundreds of thousands of candidates:</p>
+<pre><code class="language-python">def optimize_for_large_datasets():
+    settings = Settings(
+        # Reduce retry attempts for speed
+        max_attempts=3,
+
+        # Use faster algorithm
+        selection_algorithm=&quot;maximin&quot;,
+
+        # Minimize address checking overhead if not needed
+        check_same_address=False
+    )
+
+    return settings
+
+def batch_process_candidates(people_file: Path, batch_size: int = 10000):
+    &quot;&quot;&quot;Process large candidate files in batches.&quot;&quot;&quot;
+
+    # Read file in chunks
+    import pandas as pd
+
+    chunk_iter = pd.read_csv(people_file, chunksize=batch_size)
+
+    all_people = []
+    for chunk in chunk_iter:
+        # Process each chunk
+        chunk_dict = chunk.to_dict('records')
+        all_people.extend(chunk_dict)
+
+        # Optional: provide progress feedback
+        print(f&quot;Processed {len(all_people)} candidates...&quot;)
+
+    return all_people
+</code></pre>
+<h3 id="memory-management">Memory Management<a class="headerlink" href="#memory-management" title="Permanent link">&para;</a></h3>
+<p>For memory-constrained environments:</p>
+<pre><code class="language-python">def memory_efficient_selection():
+    &quot;&quot;&quot;Demonstrate memory-efficient patterns.&quot;&quot;&quot;
+
+    # Use generators instead of loading all data at once
+    def load_people_generator(file_path: Path):
+        with open(file_path, 'r') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                yield row
+
+    # Process in smaller batches
+    def process_in_batches(data_generator, batch_size: int = 1000):
+        batch = []
+        for item in data_generator:
+            batch.append(item)
+            if len(batch) &gt;= batch_size:
+                yield batch
+                batch = []
+        if batch:
+            yield batch
+
+    # Clean up intermediate objects
+    import gc
+
+    def cleanup_after_selection():
+        gc.collect()  # Force garbage collection
+</code></pre>
+<h3 id="parallel-processing">Parallel Processing<a class="headerlink" href="#parallel-processing" title="Permanent link">&para;</a></h3>
+<p>For multiple independent selections:</p>
+<pre><code class="language-python">import concurrent.futures
+from multiprocessing import Pool
+
+def parallel_selections(features, people, panel_sizes: list[int]):
+    &quot;&quot;&quot;Run multiple selections in parallel.&quot;&quot;&quot;
+
+    def run_single_selection(panel_size):
+        settings = Settings(random_number_seed=None)  # Different seed each time
+        return run_stratification(features, people, panel_size, settings)
+
+    # Use process pool for CPU-bound work
+    with Pool() as pool:
+        results = pool.map(run_single_selection, panel_sizes)
+
+    return results
+
+def concurrent_algorithm_comparison(features, people, panel_size: int):
+    &quot;&quot;&quot;Compare algorithms concurrently.&quot;&quot;&quot;
+
+    algorithms = [&quot;maximin&quot;, &quot;nash&quot;]
+
+    def test_algorithm(algorithm):
+        settings = Settings(
+            selection_algorithm=algorithm,
+            random_number_seed=42  # Same seed for fair comparison
+        )
+        return run_stratification(features, people, panel_size, settings)
+
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        futures = {executor.submit(test_algorithm, alg): alg for alg in algorithms}
+        results = {}
+
+        for future in concurrent.futures.as_completed(futures):
+            algorithm = futures[future]
+            results[algorithm] = future.result()
+
+    return results
+</code></pre>
+<h2 id="troubleshooting-guide">Troubleshooting Guide<a class="headerlink" href="#troubleshooting-guide" title="Permanent link">&para;</a></h2>
+<h3 id="common-error-patterns">Common Error Patterns<a class="headerlink" href="#common-error-patterns" title="Permanent link">&para;</a></h3>
+<h4 id="infeasible-quotas">Infeasible Quotas<a class="headerlink" href="#infeasible-quotas" title="Permanent link">&para;</a></h4>
+<p><strong>Symptoms</strong>: <code>InfeasibleQuotasError</code> exception</p>
+<p><strong>Diagnosis</strong>:</p>
+<pre><code class="language-python">def diagnose_quota_feasibility(features: FeatureCollection, panel_size: int):
+    &quot;&quot;&quot;Analyze why quotas might be infeasible.&quot;&quot;&quot;
+
+    issues = []
+
+    # Check if minimum quotas exceed panel size
+    total_minimums = sum(
+        value_counts.min
+        for _, _, value_counts in features.feature_values_counts()
+    )
+
+    if total_minimums &gt; panel_size:
+        issues.append(f&quot;Sum of minimums ({total_minimums}) exceeds panel size ({panel_size})&quot;)
+
+    # Check for impossible individual quotas
+    for feature_name, value_name, value_counts in features.feature_values_counts():
+        if value_counts.min &gt; panel_size:
+            issues.append(f&quot;{feature_name}:{value_name} minimum ({value_counts.min}) exceeds panel size&quot;)
+
+        if value_counts.max &lt; value_counts.min:
+            issues.append(f&quot;{feature_name}:{value_name} max ({value_counts.max}) &lt; min ({value_counts.min})&quot;)
+
+    return issues
+
+def suggest_quota_fixes(features: FeatureCollection, people: People, panel_size: int):
+    &quot;&quot;&quot;Suggest quota adjustments to make selection feasible.&quot;&quot;&quot;
+
+    suggestions = []
+
+    # Count available people per category
+    availability = {}
+    for person_id in people:
+        person_data = people.get_person_dict(person_id)
+        for feature_name in features.feature_names:
+            value = person_data.get(feature_name, &quot;Unknown&quot;)
+            key = (feature_name, value)
+            availability[key] = availability.get(key, 0) + 1
+
+    # Suggest adjustments
+    for feature_name, value_name, value_counts in features.feature_values_counts():
+        available = availability.get((feature_name, value_name), 0)
+
+        if value_counts.min &gt; available:
+            suggestions.append(
+                f&quot;Reduce {feature_name}:{value_name} minimum from {value_counts.min} to {available} &quot;
+                f&quot;(only {available} candidates available)&quot;
+            )
+
+    return suggestions
+</code></pre>
+<p><strong>Solutions</strong>:</p>
+<ol>
+<li><strong>Reduce minimum quotas</strong>: Lower the minimum requirements</li>
+<li><strong>Increase maximum quotas</strong>: Allow more flexibility</li>
+<li><strong>Expand candidate pool</strong>: Recruit more candidates in underrepresented categories</li>
+<li><strong>Adjust panel size</strong>: Sometimes a smaller or larger panel works better</li>
+</ol>
+<h4 id="data-quality-issues">Data Quality Issues<a class="headerlink" href="#data-quality-issues" title="Permanent link">&para;</a></h4>
+<p><strong>Symptoms</strong>: Unexpected selection results, warnings about data inconsistencies</p>
+<p><strong>Diagnosis</strong>:</p>
+<pre><code class="language-python">def audit_data_quality(people: People, features: FeatureCollection):
+    &quot;&quot;&quot;Comprehensive data quality audit.&quot;&quot;&quot;
+
+    issues = []
+
+    # Check for missing demographic data
+    required_features = features.feature_names
+    for person_id in people:
+        person_data = people.get_person_dict(person_id)
+
+        for feature in required_features:
+            if feature not in person_data or not person_data[feature].strip():
+                issues.append(f&quot;Person {person_id} missing {feature}&quot;)
+
+    # Check for unexpected feature values
+    expected_values = {}
+    for feature_name, value_name, _ in features.feature_values_counts():
+        if feature_name not in expected_values:
+            expected_values[feature_name] = set()
+        expected_values[feature_name].add(value_name)
+
+    for person_id in people:
+        person_data = people.get_person_dict(person_id)
+
+        for feature_name, expected_vals in expected_values.items():
+            actual_val = person_data.get(feature_name, &quot;&quot;)
+            if actual_val and actual_val not in expected_vals:
+                issues.append(
+                    f&quot;Person {person_id} has unexpected {feature_name} value: '{actual_val}'&quot;
+                )
+
+    # Check for duplicate IDs
+    seen_ids = set()
+    for person_id in people:
+        if person_id in seen_ids:
+            issues.append(f&quot;Duplicate person ID: {person_id}&quot;)
+        seen_ids.add(person_id)
+
+    return issues
+
+def clean_data_automatically(people_data: list[dict], features: FeatureCollection):
+    &quot;&quot;&quot;Automatically clean common data issues.&quot;&quot;&quot;
+
+    cleaned_data = []
+
+    for person in people_data:
+        cleaned_person = {}
+
+        for key, value in person.items():
+            # Strip whitespace
+            if isinstance(value, str):
+                value = value.strip()
+
+            # Standardize case for categorical variables
+            if key in features.feature_names:
+                # Convert to title case for consistency
+                value = value.title() if value else &quot;&quot;
+
+            cleaned_person[key] = value
+
+        # Skip records with missing required data
+        required_fields = [&quot;id&quot;] + features.feature_names
+        if all(cleaned_person.get(field) for field in required_fields):
+            cleaned_data.append(cleaned_person)
+
+    return cleaned_data
+</code></pre>
+<h4 id="performance-issues">Performance Issues<a class="headerlink" href="#performance-issues" title="Permanent link">&para;</a></h4>
+<p><strong>Symptoms</strong>: Long runtime, memory errors, timeouts</p>
+<p><strong>Diagnosis</strong>:</p>
+<pre><code class="language-python">import time
+import psutil
+import tracemalloc
+
+def profile_selection_performance():
+    &quot;&quot;&quot;Profile memory and CPU usage during selection.&quot;&quot;&quot;
+
+    # Start memory tracing
+    tracemalloc.start()
+
+    # Monitor CPU and memory
+    process = psutil.Process()
+    start_memory = process.memory_info().rss / 1024 / 1024  # MB
+    start_time = time.time()
+
+    try:
+        # Run your selection
+        success, panels, msgs = run_stratification(features, people, 100, settings)
+
+        # Measure resource usage
+        end_time = time.time()
+        end_memory = process.memory_info().rss / 1024 / 1024  # MB
+
+        current, peak = tracemalloc.get_traced_memory()
+        tracemalloc.stop()
+
+        print(f&quot;Runtime: {end_time - start_time:.2f} seconds&quot;)
+        print(f&quot;Memory used: {end_memory - start_memory:.2f} MB&quot;)
+        print(f&quot;Peak memory: {peak / 1024 / 1024:.2f} MB&quot;)
+
+        return success, panels, msgs
+
+    except Exception as e:
+        tracemalloc.stop()
+        raise e
+</code></pre>
+<h3 id="debug-mode">Debug Mode<a class="headerlink" href="#debug-mode" title="Permanent link">&para;</a></h3>
+<p>Enable detailed debugging:</p>
+<pre><code class="language-python">def debug_selection_process():
+    &quot;&quot;&quot;Run selection with comprehensive debugging.&quot;&quot;&quot;
+
+    import logging
+
+    # Set up detailed logging
+    logging.basicConfig(level=logging.DEBUG)
+    logger = logging.getLogger(__name__)
+
+    # Validate inputs
+    logger.info(&quot;Starting selection process validation...&quot;)
+
+    # Check data quality
+    data_issues = audit_data_quality(people, features)
+    if data_issues:
+        logger.warning(f&quot;Found {len(data_issues)} data quality issues:&quot;)
+        for issue in data_issues[:10]:  # Show first 10
+            logger.warning(f&quot;  - {issue}&quot;)
+
+    # Check quota feasibility
+    quota_issues = diagnose_quota_feasibility(features, 100)
+    if quota_issues:
+        logger.error(&quot;Quota feasibility issues:&quot;)
+        for issue in quota_issues:
+            logger.error(f&quot;  - {issue}&quot;)
+        return False, [], [&quot;Quota issues prevent selection&quot;]
+
+    # Run selection with profiling
+    logger.info(&quot;Starting selection algorithm...&quot;)
+    return profile_selection_performance()
+</code></pre>
+<h2 id="integration-patterns">Integration Patterns<a class="headerlink" href="#integration-patterns" title="Permanent link">&para;</a></h2>
+<h3 id="web-application-integration">Web Application Integration<a class="headerlink" href="#web-application-integration" title="Permanent link">&para;</a></h3>
+<p>For Flask/Django applications:</p>
+<pre><code class="language-python">from flask import Flask, request, jsonify, send_file
+import tempfile
+import os
+
+app = Flask(__name__)
+
+@app.route('/api/selection', methods=['POST'])
+def run_selection_api():
+    try:
+        # Parse request
+        data = request.get_json()
+        panel_size = data['panel_size']
+        features_data = data['features']
+        people_data = data['people']
+
+        # Convert to library objects
+        features = create_features_from_data(features_data)
+        people = create_people_from_data(people_data)
+
+        # Run selection
+        settings = Settings()
+        success, panels, msgs = run_stratification(features, people, panel_size, settings)
+
+        if success:
+            # Format results
+            selected_table, remaining_table, _ = selected_remaining_tables(
+                people, panels[0], features, settings
+            )
+
+            return jsonify({
+                'success': True,
+                'selected_count': len(panels[0]),
+                'selected_ids': list(panels[0]),
+                'messages': msgs
+            })
+        else:
+            return jsonify({
+                'success': False,
+                'error': 'Selection failed',
+                'messages': msgs
+            }), 400
+
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
+
+@app.route('/api/selection/export/&lt;format&gt;')
+def export_results(format):
+    # Implementation for exporting results in various formats
+    pass
+</code></pre>
+<h3 id="batch-processing-pipeline">Batch Processing Pipeline<a class="headerlink" href="#batch-processing-pipeline" title="Permanent link">&para;</a></h3>
+<p>For automated processing:</p>
+<pre><code class="language-python">import argparse
+import sys
+from pathlib import Path
+from datetime import datetime
+
+def batch_processing_pipeline():
+    &quot;&quot;&quot;Complete pipeline for batch processing multiple selections.&quot;&quot;&quot;
+
+    parser = argparse.ArgumentParser(description='Batch sortition processing')
+    parser.add_argument('--input-dir', type=Path, required=True)
+    parser.add_argument('--output-dir', type=Path, required=True)
+    parser.add_argument('--panel-sizes', nargs='+', type=int, default=[100])
+    parser.add_argument('--algorithms', nargs='+', default=['maximin'])
+
+    args = parser.parse_args()
+
+    # Create output directory
+    timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+    run_dir = args.output_dir / f&quot;selection_run_{timestamp}&quot;
+    run_dir.mkdir(parents=True, exist_ok=True)
+
+    # Process each configuration
+    results_summary = []
+
+    for algorithm in args.algorithms:
+        for panel_size in args.panel_sizes:
+            try:
+                result = process_single_configuration(
+                    args.input_dir, run_dir, algorithm, panel_size
+                )
+                results_summary.append(result)
+
+            except Exception as e:
+                print(f&quot;Error processing {algorithm}/{panel_size}: {e}&quot;)
+                results_summary.append({
+                    'algorithm': algorithm,
+                    'panel_size': panel_size,
+                    'success': False,
+                    'error': str(e)
+                })
+
+    # Generate summary report
+    generate_summary_report(run_dir, results_summary)
+
+    return results_summary
+
+def process_single_configuration(input_dir: Path, output_dir: Path, algorithm: str, panel_size: int):
+    &quot;&quot;&quot;Process a single algorithm/panel size combination.&quot;&quot;&quot;
+
+    # Load data
+    adapter = CSVAdapter()
+    features, _ = adapter.load_features_from_file(input_dir / &quot;features.csv&quot;)
+    people, _ = adapter.load_people_from_file(input_dir / &quot;people.csv&quot;, Settings(), features)
+
+    # Configure settings
+    settings = Settings(
+        selection_algorithm=algorithm,
+        random_number_seed=42  # Reproducible for comparison
+    )
+
+    # Run selection
+    success, panels, msgs = run_stratification(features, people, panel_size, settings)
+
+    if success:
+        # Export results
+        selected_table, remaining_table, _ = selected_remaining_tables(
+            people, panels[0], features, settings
+        )
+
+        output_prefix = f&quot;{algorithm}_{panel_size}&quot;
+
+        with open(output_dir / f&quot;{output_prefix}_selected.csv&quot;, &quot;w&quot;, newline=&quot;&quot;) as f:
+            adapter.selected_file = f
+            adapter._write_rows(f, selected_table)
+
+        with open(output_dir / f&quot;{output_prefix}_remaining.csv&quot;, &quot;w&quot;, newline=&quot;&quot;) as f:
+            adapter.remaining_file = f
+            adapter._write_rows(f, remaining_table)
+
+    return {
+        'algorithm': algorithm,
+        'panel_size': panel_size,
+        'success': success,
+        'selected_count': len(panels[0]) if success else 0,
+        'messages': len(msgs)
+    }
+</code></pre>
+<h3 id="monitoring-and-alerting">Monitoring and Alerting<a class="headerlink" href="#monitoring-and-alerting" title="Permanent link">&para;</a></h3>
+<p>For production deployments:</p>
+<pre><code class="language-python">import smtplib
+from email.mime.text import MimeText
+from email.mime.multipart import MimeMultipart
+
+class SelectionMonitor:
+    &quot;&quot;&quot;Monitor selection processes and send alerts.&quot;&quot;&quot;
+
+    def __init__(self, email_config: dict):
+        self.email_config = email_config
+
+    def monitor_selection(self, features, people, panel_size, settings):
+        &quot;&quot;&quot;Run selection with monitoring and alerting.&quot;&quot;&quot;
+
+        start_time = datetime.now()
+
+        try:
+            # Pre-flight checks
+            issues = self._pre_flight_checks(features, people, panel_size)
+            if issues:
+                self._send_alert(&quot;Pre-flight check failed&quot;, &quot;\n&quot;.join(issues))
+                return False, [], issues
+
+            # Run selection
+            success, panels, msgs = run_stratification(features, people, panel_size, settings)
+
+            # Post-selection analysis
+            if success:
+                analysis = self._analyze_results(people, panels[0], features)
+                self._send_success_notification(analysis)
+            else:
+                self._send_alert(&quot;Selection failed&quot;, &quot;\n&quot;.join(msgs))
+
+            return success, panels, msgs
+
+        except Exception as e:
+            self._send_alert(&quot;Selection error&quot;, str(e))
+            raise
+
+        finally:
+            duration = datetime.now() - start_time
+            print(f&quot;Selection completed in {duration}&quot;)
+
+    def _pre_flight_checks(self, features, people, panel_size):
+        &quot;&quot;&quot;Run pre-flight checks before selection.&quot;&quot;&quot;
+        issues = []
+
+        # Check pool size
+        if len(people) &lt; panel_size * 2:
+            issues.append(f&quot;Small candidate pool: {len(people)} for panel of {panel_size}&quot;)
+
+        # Check quota feasibility
+        quota_issues = diagnose_quota_feasibility(features, panel_size)
+        issues.extend(quota_issues)
+
+        return issues
+
+    def _analyze_results(self, people, selected_panel, features):
+        &quot;&quot;&quot;Analyze selection results for quality metrics.&quot;&quot;&quot;
+
+        analysis = {
+            'panel_size': len(selected_panel),
+            'pool_size': len(people),
+            'selection_rate': len(selected_panel) / len(people),
+            'demographic_breakdown': {}
+        }
+
+        # Calculate demographic breakdown
+        for person_id in selected_panel:
+            person_data = people.get_person_dict(person_id)
+            for feature_name in features.feature_names:
+                feature_value = person_data.get(feature_name, &quot;Unknown&quot;)
+                key = f&quot;{feature_name}:{feature_value}&quot;
+                analysis['demographic_breakdown'][key] = analysis['demographic_breakdown'].get(key, 0) + 1
+
+        return analysis
+
+    def _send_alert(self, subject: str, message: str):
+        &quot;&quot;&quot;Send email alert.&quot;&quot;&quot;
+        # Implementation depends on your email setup
+        print(f&quot;ALERT - {subject}: {message}&quot;)
+
+    def _send_success_notification(self, analysis: dict):
+        &quot;&quot;&quot;Send success notification with analysis.&quot;&quot;&quot;
+        message = f&quot;Selection completed successfully. Panel size: {analysis['panel_size']}&quot;
+        print(f&quot;SUCCESS - {message}&quot;)
+</code></pre>
+<h2 id="best-practices-summary">Best Practices Summary<a class="headerlink" href="#best-practices-summary" title="Permanent link">&para;</a></h2>
+<h3 id="development-best-practices">Development Best Practices<a class="headerlink" href="#development-best-practices" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Always validate inputs</strong>: Check data quality before running selections</li>
+<li><strong>Use appropriate random seeds</strong>: Fixed seeds for testing, None for production</li>
+<li><strong>Handle errors gracefully</strong>: Provide meaningful error messages and recovery options</li>
+<li><strong>Test with edge cases</strong>: Small pools, extreme quotas, missing data</li>
+<li><strong>Monitor performance</strong>: Track memory usage and runtime for large datasets</li>
+</ol>
+<h3 id="production-best-practices">Production Best Practices<a class="headerlink" href="#production-best-practices" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Implement comprehensive logging</strong>: Track all selection attempts and results</li>
+<li><strong>Set up monitoring and alerting</strong>: Detect failures and performance issues</li>
+<li><strong>Use version control for configurations</strong>: Track changes to quotas and settings</li>
+<li><strong>Backup candidate data</strong>: Ensure data persistence and recoverability</li>
+<li><strong>Document selection criteria</strong>: Maintain audit trails for transparency</li>
+</ol>
+<h3 id="scaling-best-practices">Scaling Best Practices<a class="headerlink" href="#scaling-best-practices" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Optimize for your use case</strong>: Choose appropriate algorithms and settings</li>
+<li><strong>Consider parallel processing</strong>: For multiple independent selections</li>
+<li><strong>Implement caching</strong>: For expensive data loading operations</li>
+<li><strong>Monitor resource usage</strong>: Plan capacity for peak loads</li>
+<li><strong>Use appropriate hardware</strong>: SSDs for I/O intensive operations</li>
+</ol>
+<h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong><a href="../concepts/">Core Concepts</a></strong> - Understand sortition fundamentals</li>
+<li><strong><a href="../quickstart/">Quick Start</a></strong> - Get started quickly</li>
+<li><strong><a href="../api-reference/">API Reference</a></strong> - Complete function documentation</li>
+<li><strong><a href="../cli/">CLI Usage</a></strong> - Command line interface</li>
+<li><strong><a href="../adapters/">Data Adapters</a></strong> - Working with different data sources</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Maintained by <a href="https://sortitionfoundation.org">sortitionfoundation</a>.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/sortitionfoundation/sortition-algorithms" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://pypi.org/project/sortition-algorithms" target="_blank" rel="noopener" title="pypi.org" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6M286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3M167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4m-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+    
+  </body>
+</html>

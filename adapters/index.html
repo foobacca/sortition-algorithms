@@ -1,0 +1,1888 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A package containing algorithms for sortition - democratic lotteries.">
+      
+      
+        <meta name="author" content="Sortition Foundation">
+      
+      
+        <link rel="canonical" href="https://sortitionfoundation.github.io/sortition-algorithms/adapters/">
+      
+      
+        <link rel="prev" href="../cli/">
+      
+      
+        <link rel="next" href="../advanced/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Adapters - sortition-algorithms</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#data-adapters" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="sortition-algorithms" class="md-header__button md-logo" aria-label="sortition-algorithms" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            sortition-algorithms
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Adapters
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="deep-orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/sortitionfoundation/sortition-algorithms" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sortitionfoundation/sortition-algorithms
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="sortition-algorithms" class="md-nav__button md-logo" aria-label="sortition-algorithms" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    sortition-algorithms
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/sortitionfoundation/sortition-algorithms" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    sortitionfoundation/sortition-algorithms
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Quick Start
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Concepts
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CLI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Adapters
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Adapters
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#built-in-adapters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Built-in Adapters
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Built-in Adapters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#csvadapter" class="md-nav__link">
+    <span class="md-ellipsis">
+      CSVAdapter
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CSVAdapter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#working-with-string-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Working with String Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#full-csv-workflow-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Full CSV Workflow Example
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gsheetadapter" class="md-nav__link">
+    <span class="md-ellipsis">
+      GSheetAdapter
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GSheetAdapter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setup-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Requirements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-usage_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#full-google-sheets-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Full Google Sheets Workflow
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#google-sheets-data-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      Google Sheets Data Format
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-custom-adapters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Writing Custom Adapters
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing Custom Adapters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adapter-interface-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adapter Interface Pattern
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-excel-adapter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: Excel Adapter
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-sql-database-adapter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: SQL Database Adapter
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-adapter-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Adapter Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Adapter Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#caching-adapter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Caching Adapter
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validation-adapter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validation Adapter
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Handling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-custom-adapters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing Custom Adapters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resource-cleanup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resource Cleanup
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration Examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pandas-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pandas Integration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws-s3-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      AWS S3 Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next Steps
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../advanced/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Advanced
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API Reference
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../modules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Modules
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#built-in-adapters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Built-in Adapters
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Built-in Adapters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#csvadapter" class="md-nav__link">
+    <span class="md-ellipsis">
+      CSVAdapter
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CSVAdapter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#working-with-string-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Working with String Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#full-csv-workflow-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Full CSV Workflow Example
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gsheetadapter" class="md-nav__link">
+    <span class="md-ellipsis">
+      GSheetAdapter
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GSheetAdapter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setup-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Requirements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-usage_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#full-google-sheets-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Full Google Sheets Workflow
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#google-sheets-data-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      Google Sheets Data Format
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-custom-adapters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Writing Custom Adapters
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing Custom Adapters">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adapter-interface-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adapter Interface Pattern
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-excel-adapter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: Excel Adapter
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-sql-database-adapter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: SQL Database Adapter
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-adapter-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Adapter Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Adapter Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#caching-adapter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Caching Adapter
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#validation-adapter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validation Adapter
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Handling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-custom-adapters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing Custom Adapters
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resource-cleanup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resource Cleanup
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration Examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pandas-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pandas Integration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aws-s3-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      AWS S3 Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next Steps
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="data-adapters">Data Adapters<a class="headerlink" href="#data-adapters" title="Permanent link">&para;</a></h1>
+<p>Data adapters handle loading demographic data and candidate pools from various sources, and exporting selection results back to those sources. The library includes adapters for CSV files and Google Sheets, and you can write custom adapters for other data sources.</p>
+<h2 id="built-in-adapters">Built-in Adapters<a class="headerlink" href="#built-in-adapters" title="Permanent link">&para;</a></h2>
+<h3 id="csvadapter">CSVAdapter<a class="headerlink" href="#csvadapter" title="Permanent link">&para;</a></h3>
+<p>The most commonly used adapter for working with local CSV files.</p>
+<h4 id="basic-usage">Basic Usage<a class="headerlink" href="#basic-usage" title="Permanent link">&para;</a></h4>
+<pre><code class="language-python">from sortition_algorithms import CSVAdapter, Settings
+from pathlib import Path
+
+adapter = CSVAdapter()
+
+# Load data
+features, msgs = adapter.load_features_from_file(Path(&quot;demographics.csv&quot;))
+people, msgs = adapter.load_people_from_file(Path(&quot;candidates.csv&quot;), Settings(), features)
+
+# Configure output files
+adapter.selected_file = open(&quot;selected.csv&quot;, &quot;w&quot;, newline=&quot;&quot;)
+adapter.remaining_file = open(&quot;remaining.csv&quot;, &quot;w&quot;, newline=&quot;&quot;)
+
+# Export results (after running selection)
+adapter.output_selected_remaining(selected_rows, remaining_rows)
+
+# Clean up
+adapter.selected_file.close()
+adapter.remaining_file.close()
+</code></pre>
+<h4 id="working-with-string-data">Working with String Data<a class="headerlink" href="#working-with-string-data" title="Permanent link">&para;</a></h4>
+<p>For data already in memory:</p>
+<pre><code class="language-python"># Load from string content
+features_csv = &quot;&quot;&quot;feature,value,min,max
+Gender,Male,45,55
+Gender,Female,45,55&quot;&quot;&quot;
+
+people_csv = &quot;&quot;&quot;id,Name,Gender
+p001,Alice,Female
+p002,Bob,Male&quot;&quot;&quot;
+
+features, msgs = adapter.load_features_from_str(features_csv)
+people, msgs = adapter.load_people_from_str(people_csv, settings, features)
+</code></pre>
+<h4 id="full-csv-workflow-example">Full CSV Workflow Example<a class="headerlink" href="#full-csv-workflow-example" title="Permanent link">&para;</a></h4>
+<pre><code class="language-python">from sortition_algorithms import CSVAdapter, run_stratification, selected_remaining_tables, Settings
+from pathlib import Path
+import csv
+
+def csv_selection_workflow():
+    # Initialize
+    adapter = CSVAdapter()
+    settings = Settings()
+
+    # Load data
+    features, msgs = adapter.load_features_from_file(Path(&quot;demographics.csv&quot;))
+    print(&quot;\n&quot;.join(msgs))
+
+    people, msgs = adapter.load_people_from_file(Path(&quot;candidates.csv&quot;), settings, features)
+    print(&quot;\n&quot;.join(msgs))
+
+    # Run selection
+    success, panels, msgs = run_stratification(features, people, 100, settings)
+
+    if success:
+        # Format results
+        selected_table, remaining_table, _ = selected_remaining_tables(
+            people, panels[0], features, settings
+        )
+
+        # Export results
+        with open(&quot;selected.csv&quot;, &quot;w&quot;, newline=&quot;&quot;) as selected_f, \\
+             open(&quot;remaining.csv&quot;, &quot;w&quot;, newline=&quot;&quot;) as remaining_f:
+
+            adapter.selected_file = selected_f
+            adapter.remaining_file = remaining_f
+            adapter.output_selected_remaining(selected_table, remaining_table)
+
+        print(f&quot;Selected {len(panels[0])} people successfully&quot;)
+    else:
+        print(&quot;Selection failed&quot;)
+        print(&quot;\n&quot;.join(msgs))
+</code></pre>
+<h3 id="gsheetadapter">GSheetAdapter<a class="headerlink" href="#gsheetadapter" title="Permanent link">&para;</a></h3>
+<p>For organizations using Google Sheets for data management.</p>
+<h4 id="setup-requirements">Setup Requirements<a class="headerlink" href="#setup-requirements" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>Google Cloud Project</strong>: Create a project in <a href="https://console.cloud.google.com/">Google Cloud Console</a></li>
+<li><strong>Enable APIs</strong>: Enable Google Sheets API and Google Drive API</li>
+<li><strong>Service Account</strong>: Create service account credentials and download JSON key</li>
+<li><strong>Share Spreadsheet</strong>: Share your spreadsheet with the service account email address</li>
+</ol>
+<h4 id="basic-usage_1">Basic Usage<a class="headerlink" href="#basic-usage_1" title="Permanent link">&para;</a></h4>
+<pre><code class="language-python">from sortition_algorithms import GSheetAdapter, Settings
+from pathlib import Path
+
+# Initialize with credentials
+adapter = GSheetAdapter(
+    auth_json_path=Path(&quot;/secure/path/credentials.json&quot;),
+    gen_rem_tab=&quot;on&quot;  # Generate remaining tab
+)
+
+# Load data from Google Sheet
+features, msgs = adapter.load_features(&quot;My Spreadsheet&quot;, &quot;Demographics&quot;)
+print(&quot;\n&quot;.join(msgs))
+
+people, msgs = adapter.load_people(&quot;Candidates&quot;, settings, features)
+print(&quot;\n&quot;.join(msgs))
+
+# Configure output tabs
+adapter.selected_tab_name = &quot;Selected Panel&quot;
+adapter.remaining_tab_name = &quot;Reserve Pool&quot;
+
+# Export results (after running selection)
+adapter.output_selected_remaining(selected_rows, remaining_rows, settings)
+</code></pre>
+<h4 id="full-google-sheets-workflow">Full Google Sheets Workflow<a class="headerlink" href="#full-google-sheets-workflow" title="Permanent link">&para;</a></h4>
+<pre><code class="language-python">from sortition_algorithms import GSheetAdapter, run_stratification, selected_remaining_tables, Settings
+from pathlib import Path
+
+def gsheet_selection_workflow():
+    # Initialize
+    adapter = GSheetAdapter(
+        auth_json_path=Path(&quot;credentials.json&quot;),
+        gen_rem_tab=&quot;on&quot;
+    )
+    settings = Settings()
+
+    # Load data
+    features, msgs = adapter.load_features(&quot;Citizen Panel 2024&quot;, &quot;Demographics&quot;)
+    if features is None:
+        print(&quot;Failed to load features:&quot;, &quot;\n&quot;.join(msgs))
+        return
+
+    people, msgs = adapter.load_people(&quot;Candidates&quot;, settings, features)
+    if people is None:
+        print(&quot;Failed to load people:&quot;, &quot;\n&quot;.join(msgs))
+        return
+
+    # Run selection
+    success, panels, msgs = run_stratification(features, people, 120, settings)
+
+    if success:
+        # Format results
+        selected_table, remaining_table, _ = selected_remaining_tables(
+            people, panels[0], features, settings
+        )
+
+        # Configure output
+        adapter.selected_tab_name = &quot;Selected Panel&quot;
+        adapter.remaining_tab_name = &quot;Reserve Pool&quot;
+
+        # Export to Google Sheets
+        dupes = adapter.output_selected_remaining(selected_table, remaining_table, settings)
+
+        print(f&quot;Selected {len(panels[0])} people successfully&quot;)
+        if dupes:
+            print(f&quot;Warning: {len(dupes)} people in remaining pool share addresses&quot;)
+    else:
+        print(&quot;Selection failed:&quot;, &quot;\n&quot;.join(msgs))
+</code></pre>
+<h4 id="google-sheets-data-format">Google Sheets Data Format<a class="headerlink" href="#google-sheets-data-format" title="Permanent link">&para;</a></h4>
+<p>Your spreadsheet should be structured as follows:</p>
+<p><strong>Demographics Tab:</strong></p>
+<table>
+<thead>
+<tr>
+<th>feature</th>
+<th>value</th>
+<th>min</th>
+<th>max</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gender</td>
+<td>Male</td>
+<td>45</td>
+<td>55</td>
+</tr>
+<tr>
+<td>Gender</td>
+<td>Female</td>
+<td>45</td>
+<td>55</td>
+</tr>
+<tr>
+<td>Age</td>
+<td>18-30</td>
+<td>20</td>
+<td>30</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Candidates Tab:</strong></p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>Name</th>
+<th>Email</th>
+<th>Gender</th>
+<th>Age</th>
+<th>Location</th>
+<th>Address</th>
+<th>Postcode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>p001</td>
+<td>Alice Smith</td>
+<td><a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#97;&#108;&#105;&#99;&#101;&#64;&#101;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#97;&#108;&#105;&#99;&#101;&#64;&#101;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a></td>
+<td>Female</td>
+<td>18-30</td>
+<td>Urban</td>
+<td>123 Main St</td>
+<td>12345</td>
+</tr>
+<tr>
+<td>p002</td>
+<td>Bob Jones</td>
+<td><a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#98;&#111;&#98;&#64;&#101;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#98;&#111;&#98;&#64;&#101;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a></td>
+<td>Male</td>
+<td>31-50</td>
+<td>Rural</td>
+<td>456 Oak Ave</td>
+<td>67890</td>
+</tr>
+</tbody>
+</table>
+<h2 id="writing-custom-adapters">Writing Custom Adapters<a class="headerlink" href="#writing-custom-adapters" title="Permanent link">&para;</a></h2>
+<p>You can create custom adapters for other data sources like Excel files, SQL databases, or APIs.</p>
+<h3 id="adapter-interface-pattern">Adapter Interface Pattern<a class="headerlink" href="#adapter-interface-pattern" title="Permanent link">&para;</a></h3>
+<p>All adapters should implement these core methods:</p>
+<pre><code class="language-python">from sortition_algorithms import FeatureCollection, People, Settings
+from typing import Protocol
+
+class SortitionAdapter(Protocol):
+    &quot;&quot;&quot;Protocol defining the adapter interface.&quot;&quot;&quot;
+
+    def load_features(self, source_info: str, **kwargs) -&gt; tuple[FeatureCollection, list[str]]:
+        &quot;&quot;&quot;Load feature definitions from data source.
+
+        Returns:
+            (features, messages) - features object and status messages
+        &quot;&quot;&quot;
+        ...
+
+    def load_people(
+        self,
+        source_info: str,
+        settings: Settings,
+        features: FeatureCollection,
+        **kwargs
+    ) -&gt; tuple[People, list[str]]:
+        &quot;&quot;&quot;Load candidate pool from data source.
+
+        Returns:
+            (people, messages) - people object and status messages
+        &quot;&quot;&quot;
+        ...
+
+    def output_selected_remaining(
+        self,
+        selected_rows: list[list[str]],
+        remaining_rows: list[list[str]],
+        **kwargs
+    ) -&gt; None:
+        &quot;&quot;&quot;Export selection results to data source.&quot;&quot;&quot;
+        ...
+</code></pre>
+<h3 id="example-excel-adapter">Example: Excel Adapter<a class="headerlink" href="#example-excel-adapter" title="Permanent link">&para;</a></h3>
+<p>Here's a complete example of an Excel adapter using the <code>openpyxl</code> library:</p>
+<pre><code class="language-python">from pathlib import Path
+from typing import Any
+import openpyxl
+from openpyxl.worksheet.worksheet import Worksheet
+
+from sortition_algorithms import FeatureCollection, People, Settings
+from sortition_algorithms.features import read_in_features
+from sortition_algorithms.people import read_in_people
+
+class ExcelAdapter:
+    &quot;&quot;&quot;Adapter for Excel files using openpyxl.&quot;&quot;&quot;
+
+    def __init__(self) -&gt; None:
+        self.workbook: openpyxl.Workbook | None = None
+        self.output_file: Path | None = None
+
+    def load_features_from_file(
+        self,
+        excel_file: Path,
+        sheet_name: str = &quot;Demographics&quot;
+    ) -&gt; tuple[FeatureCollection, list[str]]:
+        &quot;&quot;&quot;Load features from Excel file.&quot;&quot;&quot;
+        workbook = openpyxl.load_workbook(excel_file)
+
+        if sheet_name not in workbook.sheetnames:
+            return None, [f&quot;Sheet '{sheet_name}' not found in {excel_file}&quot;]
+
+        sheet = workbook[sheet_name]
+
+        # Read header row
+        headers = [cell.value for cell in sheet[1]]
+
+        # Read data rows
+        data = []
+        for row in sheet.iter_rows(min_row=2, values_only=True):
+            if any(cell is not None for cell in row):  # Skip empty rows
+                row_dict = {headers[i]: str(row[i]) if row[i] is not None else &quot;&quot;
+                           for i in range(len(headers))}
+                data.append(row_dict)
+
+        features, msgs = read_in_features(headers, data)
+        return features, msgs
+
+    def load_people_from_file(
+        self,
+        excel_file: Path,
+        settings: Settings,
+        features: FeatureCollection,
+        sheet_name: str = &quot;Candidates&quot;
+    ) -&gt; tuple[People, list[str]]:
+        &quot;&quot;&quot;Load people from Excel file.&quot;&quot;&quot;
+        workbook = openpyxl.load_workbook(excel_file)
+
+        if sheet_name not in workbook.sheetnames:
+            return None, [f&quot;Sheet '{sheet_name}' not found in {excel_file}&quot;]
+
+        sheet = workbook[sheet_name]
+
+        # Read header row
+        headers = [cell.value for cell in sheet[1]]
+
+        # Read data rows
+        data = []
+        for row in sheet.iter_rows(min_row=2, values_only=True):
+            if any(cell is not None for cell in row):  # Skip empty rows
+                row_dict = {headers[i]: str(row[i]) if row[i] is not None else &quot;&quot;
+                           for i in range(len(headers))}
+                data.append(row_dict)
+
+        people, msgs = read_in_people(headers, data, features, settings)
+        return people, msgs
+
+    def output_selected_remaining(
+        self,
+        selected_rows: list[list[str]],
+        remaining_rows: list[list[str]],
+        output_file: Path,
+        selected_sheet: str = &quot;Selected&quot;,
+        remaining_sheet: str = &quot;Remaining&quot;
+    ) -&gt; None:
+        &quot;&quot;&quot;Export results to Excel file.&quot;&quot;&quot;
+        workbook = openpyxl.Workbook()
+
+        # Remove default sheet
+        workbook.remove(workbook.active)
+
+        # Create selected sheet
+        selected_ws = workbook.create_sheet(selected_sheet)
+        self._write_data_to_sheet(selected_ws, selected_rows)
+
+        # Create remaining sheet
+        remaining_ws = workbook.create_sheet(remaining_sheet)
+        self._write_data_to_sheet(remaining_ws, remaining_rows)
+
+        # Save workbook
+        workbook.save(output_file)
+
+    def _write_data_to_sheet(self, sheet: Worksheet, data: list[list[str]]) -&gt; None:
+        &quot;&quot;&quot;Write data rows to worksheet.&quot;&quot;&quot;
+        for row_idx, row_data in enumerate(data, 1):
+            for col_idx, cell_value in enumerate(row_data, 1):
+                sheet.cell(row=row_idx, column=col_idx, value=cell_value)
+
+        # Style header row
+        if data:
+            for cell in sheet[1]:
+                cell.font = openpyxl.styles.Font(bold=True)
+                cell.fill = openpyxl.styles.PatternFill(&quot;solid&quot;, fgColor=&quot;CCCCCC&quot;)
+
+# Usage example
+def excel_workflow():
+    adapter = ExcelAdapter()
+    settings = Settings()
+
+    # Load data
+    features, msgs = adapter.load_features_from_file(
+        Path(&quot;selection_data.xlsx&quot;), &quot;Demographics&quot;
+    )
+    people, msgs = adapter.load_people_from_file(
+        Path(&quot;selection_data.xlsx&quot;), settings, features, &quot;Candidates&quot;
+    )
+
+    # Run selection (assuming you have the selection logic)
+    # success, panels, msgs = run_stratification(...)
+
+    # Export results
+    # adapter.output_selected_remaining(
+    #     selected_table, remaining_table, Path(&quot;results.xlsx&quot;)
+    # )
+</code></pre>
+<h3 id="example-sql-database-adapter">Example: SQL Database Adapter<a class="headerlink" href="#example-sql-database-adapter" title="Permanent link">&para;</a></h3>
+<p>For larger datasets stored in databases:</p>
+<pre><code class="language-python">import sqlite3
+from pathlib import Path
+from typing import Any
+
+from sortition_algorithms import FeatureCollection, People, Settings
+from sortition_algorithms.features import read_in_features
+from sortition_algorithms.people import read_in_people
+
+class SQLiteAdapter:
+    &quot;&quot;&quot;Adapter for SQLite databases.&quot;&quot;&quot;
+
+    def __init__(self, db_path: Path) -&gt; None:
+        self.db_path = db_path
+
+    def load_features_from_db(
+        self,
+        table_name: str = &quot;features&quot;
+    ) -&gt; tuple[FeatureCollection, list[str]]:
+        &quot;&quot;&quot;Load features from database table.&quot;&quot;&quot;
+        conn = sqlite3.connect(self.db_path)
+        conn.row_factory = sqlite3.Row
+
+        try:
+            cursor = conn.execute(f&quot;SELECT * FROM {table_name}&quot;)
+            rows = cursor.fetchall()
+
+            if not rows:
+                return None, [f&quot;No data found in table {table_name}&quot;]
+
+            # Convert to format expected by read_in_features
+            headers = list(rows[0].keys())
+            data = [{col: str(row[col]) for col in headers} for row in rows]
+
+            features, msgs = read_in_features(headers, data)
+            return features, msgs
+
+        finally:
+            conn.close()
+
+    def load_people_from_db(
+        self,
+        settings: Settings,
+        features: FeatureCollection,
+        table_name: str = &quot;candidates&quot;,
+        where_clause: str = &quot;&quot;
+    ) -&gt; tuple[People, list[str]]:
+        &quot;&quot;&quot;Load people from database table.&quot;&quot;&quot;
+        conn = sqlite3.connect(self.db_path)
+        conn.row_factory = sqlite3.Row
+
+        try:
+            query = f&quot;SELECT * FROM {table_name}&quot;
+            if where_clause:
+                query += f&quot; WHERE {where_clause}&quot;
+
+            cursor = conn.execute(query)
+            rows = cursor.fetchall()
+
+            if not rows:
+                return None, [f&quot;No candidates found in table {table_name}&quot;]
+
+            # Convert to format expected by read_in_people
+            headers = list(rows[0].keys())
+            data = [{col: str(row[col]) for col in headers} for row in rows]
+
+            people, msgs = read_in_people(headers, data, features, settings)
+            return people, msgs
+
+        finally:
+            conn.close()
+
+    def output_selected_remaining(
+        self,
+        selected_rows: list[list[str]],
+        remaining_rows: list[list[str]],
+        selected_table: str = &quot;selected_panel&quot;,
+        remaining_table: str = &quot;remaining_pool&quot;
+    ) -&gt; None:
+        &quot;&quot;&quot;Export results to database tables.&quot;&quot;&quot;
+        conn = sqlite3.connect(self.db_path)
+
+        try:
+            # Create tables if they don't exist
+            if selected_rows:
+                headers = selected_rows[0]
+                self._create_table_from_headers(conn, selected_table, headers)
+                self._insert_data(conn, selected_table, headers, selected_rows[1:])
+
+            if remaining_rows:
+                headers = remaining_rows[0]
+                self._create_table_from_headers(conn, remaining_table, headers)
+                self._insert_data(conn, remaining_table, headers, remaining_rows[1:])
+
+            conn.commit()
+
+        finally:
+            conn.close()
+
+    def _create_table_from_headers(
+        self,
+        conn: sqlite3.Connection,
+        table_name: str,
+        headers: list[str]
+    ) -&gt; None:
+        &quot;&quot;&quot;Create table with columns based on headers.&quot;&quot;&quot;
+        conn.execute(f&quot;DROP TABLE IF EXISTS {table_name}&quot;)
+
+        columns = &quot;, &quot;.join(f&quot;{header} TEXT&quot; for header in headers)
+        conn.execute(f&quot;CREATE TABLE {table_name} ({columns})&quot;)
+
+    def _insert_data(
+        self,
+        conn: sqlite3.Connection,
+        table_name: str,
+        headers: list[str],
+        data_rows: list[list[str]]
+    ) -&gt; None:
+        &quot;&quot;&quot;Insert data rows into table.&quot;&quot;&quot;
+        placeholders = &quot;, &quot;.join(&quot;?&quot; * len(headers))
+        query = f&quot;INSERT INTO {table_name} VALUES ({placeholders})&quot;
+
+        conn.executemany(query, data_rows)
+
+# Usage example
+def sqlite_workflow():
+    adapter = SQLiteAdapter(Path(&quot;selection.db&quot;))
+    settings = Settings()
+
+    # Load data
+    features, msgs = adapter.load_features_from_db(&quot;demographics&quot;)
+    people, msgs = adapter.load_people_from_db(
+        settings, features, &quot;candidates&quot;, &quot;status = 'eligible'&quot;
+    )
+
+    # Export results
+    # adapter.output_selected_remaining(
+    #     selected_table, remaining_table, &quot;panel_2024&quot;, &quot;reserves_2024&quot;
+    # )
+</code></pre>
+<h2 id="advanced-adapter-patterns">Advanced Adapter Patterns<a class="headerlink" href="#advanced-adapter-patterns" title="Permanent link">&para;</a></h2>
+<h3 id="caching-adapter">Caching Adapter<a class="headerlink" href="#caching-adapter" title="Permanent link">&para;</a></h3>
+<p>For expensive data sources, implement caching:</p>
+<pre><code class="language-python">import pickle
+from pathlib import Path
+from datetime import datetime, timedelta
+
+class CachingAdapter:
+    &quot;&quot;&quot;Wrapper that adds caching to any adapter.&quot;&quot;&quot;
+
+    def __init__(self, base_adapter: Any, cache_dir: Path, cache_ttl_hours: int = 24):
+        self.base_adapter = base_adapter
+        self.cache_dir = cache_dir
+        self.cache_ttl = timedelta(hours=cache_ttl_hours)
+        self.cache_dir.mkdir(exist_ok=True)
+
+    def load_features(self, *args, **kwargs) -&gt; tuple[FeatureCollection, list[str]]:
+        cache_key = f&quot;features_{hash(str(args) + str(kwargs))}.pickle&quot;
+        cache_file = self.cache_dir / cache_key
+
+        # Check cache
+        if cache_file.exists():
+            cache_time = datetime.fromtimestamp(cache_file.stat().st_mtime)
+            if datetime.now() - cache_time &lt; self.cache_ttl:
+                with open(cache_file, &quot;rb&quot;) as f:
+                    return pickle.load(f)
+
+        # Load fresh data
+        result = self.base_adapter.load_features(*args, **kwargs)
+
+        # Cache result
+        with open(cache_file, &quot;wb&quot;) as f:
+            pickle.dump(result, f)
+
+        return result
+</code></pre>
+<h3 id="validation-adapter">Validation Adapter<a class="headerlink" href="#validation-adapter" title="Permanent link">&para;</a></h3>
+<p>Add data validation to any adapter:</p>
+<pre><code class="language-python">class ValidatingAdapter:
+    &quot;&quot;&quot;Wrapper that adds validation to any adapter.&quot;&quot;&quot;
+
+    def __init__(self, base_adapter: Any):
+        self.base_adapter = base_adapter
+
+    def load_people(self, *args, **kwargs) -&gt; tuple[People, list[str]]:
+        people, msgs = self.base_adapter.load_people(*args, **kwargs)
+
+        # Add validation
+        validation_msgs = self._validate_people(people)
+        msgs.extend(validation_msgs)
+
+        return people, msgs
+
+    def _validate_people(self, people: People) -&gt; list[str]:
+        &quot;&quot;&quot;Validate people data quality.&quot;&quot;&quot;
+        msgs = []
+
+        # Check for duplicate IDs
+        seen_ids = set()
+        for person_id in people:
+            if person_id in seen_ids:
+                msgs.append(f&quot;Duplicate ID found: {person_id}&quot;)
+            seen_ids.add(person_id)
+
+        # Check for missing required fields
+        required_fields = [&quot;Name&quot;, &quot;Email&quot;]
+        for person_id in people:
+            person_data = people.get_person_dict(person_id)
+            for field in required_fields:
+                if not person_data.get(field):
+                    msgs.append(f&quot;Missing {field} for person {person_id}&quot;)
+
+        return msgs
+</code></pre>
+<h2 id="best-practices">Best Practices<a class="headerlink" href="#best-practices" title="Permanent link">&para;</a></h2>
+<h3 id="error-handling">Error Handling<a class="headerlink" href="#error-handling" title="Permanent link">&para;</a></h3>
+<p>Always provide detailed error messages:</p>
+<pre><code class="language-python">def load_features_from_api(self, api_url: str) -&gt; tuple[FeatureCollection | None, list[str]]:
+    try:
+        response = requests.get(api_url, timeout=30)
+        response.raise_for_status()
+
+        data = response.json()
+        features, msgs = read_in_features(data[&quot;headers&quot;], data[&quot;rows&quot;])
+        return features, msgs
+
+    except requests.RequestException as e:
+        return None, [f&quot;Failed to load from API: {e}&quot;]
+    except KeyError as e:
+        return None, [f&quot;Invalid API response format: missing {e}&quot;]
+    except Exception as e:
+        return None, [f&quot;Unexpected error: {e}&quot;]
+</code></pre>
+<h3 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h3>
+<p>Make adapters configurable:</p>
+<pre><code class="language-python">class ConfigurableAdapter:
+    def __init__(self, config: dict):
+        self.config = config
+        self.timeout = config.get(&quot;timeout&quot;, 30)
+        self.retry_count = config.get(&quot;retries&quot;, 3)
+        self.batch_size = config.get(&quot;batch_size&quot;, 1000)
+</code></pre>
+<h3 id="testing-custom-adapters">Testing Custom Adapters<a class="headerlink" href="#testing-custom-adapters" title="Permanent link">&para;</a></h3>
+<p>Test your adapters with known data:</p>
+<pre><code class="language-python">def test_excel_adapter():
+    adapter = ExcelAdapter()
+
+    # Test with known data
+    features, msgs = adapter.load_features_from_file(
+        Path(&quot;test_data.xlsx&quot;), &quot;TestFeatures&quot;
+    )
+
+    assert features is not None
+    assert len(features.feature_names) &gt; 0
+    assert &quot;Gender&quot; in features.feature_names
+</code></pre>
+<h3 id="resource-cleanup">Resource Cleanup<a class="headerlink" href="#resource-cleanup" title="Permanent link">&para;</a></h3>
+<p>Ensure proper resource cleanup:</p>
+<pre><code class="language-python">class DatabaseAdapter:
+    def __enter__(self):
+        self.connection = connect_to_database()
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        if hasattr(self, 'connection'):
+            self.connection.close()
+
+# Usage
+with DatabaseAdapter() as adapter:
+    features, msgs = adapter.load_features(...)
+    # Connection automatically closed
+</code></pre>
+<h2 id="integration-examples">Integration Examples<a class="headerlink" href="#integration-examples" title="Permanent link">&para;</a></h2>
+<h3 id="pandas-integration">Pandas Integration<a class="headerlink" href="#pandas-integration" title="Permanent link">&para;</a></h3>
+<pre><code class="language-python">import pandas as pd
+
+class PandasAdapter:
+    &quot;&quot;&quot;Adapter for pandas DataFrames.&quot;&quot;&quot;
+
+    def load_features_from_dataframe(
+        self, df: pd.DataFrame
+    ) -&gt; tuple[FeatureCollection, list[str]]:
+        headers = df.columns.tolist()
+        data = df.to_dict('records')
+        # Convert all values to strings
+        data = [{k: str(v) for k, v in row.items()} for row in data]
+
+        features, msgs = read_in_features(headers, data)
+        return features, msgs
+</code></pre>
+<h3 id="aws-s3-integration">AWS S3 Integration<a class="headerlink" href="#aws-s3-integration" title="Permanent link">&para;</a></h3>
+<pre><code class="language-python">import boto3
+import csv
+from io import StringIO
+
+class S3Adapter:
+    &quot;&quot;&quot;Adapter for files stored in AWS S3.&quot;&quot;&quot;
+
+    def __init__(self, bucket_name: str):
+        self.bucket_name = bucket_name
+        self.s3_client = boto3.client('s3')
+
+    def load_features_from_s3(
+        self, key: str
+    ) -&gt; tuple[FeatureCollection, list[str]]:
+        try:
+            response = self.s3_client.get_object(Bucket=self.bucket_name, Key=key)
+            content = response['Body'].read().decode('utf-8')
+
+            # Parse CSV content
+            csv_file = StringIO(content)
+            reader = csv.DictReader(csv_file)
+
+            headers = reader.fieldnames
+            data = list(reader)
+
+            features, msgs = read_in_features(headers, data)
+            return features, msgs
+
+        except Exception as e:
+            return None, [f&quot;Failed to load from S3: {e}&quot;]
+</code></pre>
+<h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong><a href="../concepts/">Core Concepts</a></strong> - Understand sortition fundamentals</li>
+<li><strong><a href="../api-reference/">API Reference</a></strong> - Complete function documentation</li>
+<li><strong><a href="../cli/">CLI Usage</a></strong> - Command line interface</li>
+<li><strong><a href="../advanced/">Advanced Usage</a></strong> - Complex scenarios and optimization</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Maintained by <a href="https://sortitionfoundation.org">sortitionfoundation</a>.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/sortitionfoundation/sortition-algorithms" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://pypi.org/project/sortition-algorithms" target="_blank" rel="noopener" title="pypi.org" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.8 200.5c-7.7-30.9-22.3-54.2-53.4-54.2h-40.1v47.4c0 36.8-31.2 67.8-66.8 67.8H172.7c-29.2 0-53.4 25-53.4 54.3v101.8c0 29 25.2 46 53.4 54.3 33.8 9.9 66.3 11.7 106.8 0 26.9-7.8 53.4-23.5 53.4-54.3v-40.7H226.2v-13.6h160.2c31.1 0 42.6-21.7 53.4-54.2 11.2-33.5 10.7-65.7 0-108.6M286.2 404c11.1 0 20.1 9.1 20.1 20.3 0 11.3-9 20.4-20.1 20.4-11 0-20.1-9.2-20.1-20.4.1-11.3 9.1-20.3 20.1-20.3M167.8 248.1h106.8c29.7 0 53.4-24.5 53.4-54.3V91.9c0-29-24.4-50.7-53.4-55.6-35.8-5.9-74.7-5.6-106.8.1-45.2 8-53.4 24.7-53.4 55.6v40.7h106.9v13.6h-147c-31.1 0-58.3 18.7-66.8 54.2-9.8 40.7-10.2 66.1 0 108.6 7.6 31.6 25.7 54.2 56.8 54.2H101v-48.8c0-35.3 30.5-66.4 66.8-66.4m-6.7-142.6c-11.1 0-20.1-9.1-20.1-20.3.1-11.3 9-20.4 20.1-20.4 11 0 20.1 9.2 20.1 20.4s-9 20.3-20.1 20.3"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+    
+  </body>
+</html>
